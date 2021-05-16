@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
+  'images/Hikaru.png',
   'images/CodeMiko.png',
   'images/Cramling.png',
   'images/GothamChess.png',
-  'images/Hikaru.png',
   'images/Kosteniuk.png',
   'images/Vishy.png',
 ];
@@ -18,7 +17,7 @@ class VoiceSelector extends StatefulWidget {
 }
 
 class _VoiceSelectorState extends State<VoiceSelector> {
-  var _currentVoice;
+  var _currentVoice = 'Hikaru';
   @override
   Widget build(BuildContext context) {
     return Center(

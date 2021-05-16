@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-// import 'package:carousel_slider/carousel_slider.dart';
+import 'dart:ffi';
 
+import 'package:flutter/material.dart';
+import 'package:chessradio/startButton.dart';
 import './voiceSelector.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(ChessRadio());
@@ -14,15 +16,17 @@ class ChessRadio extends StatefulWidget {
 
 class _ChessRadioState extends State<ChessRadio> {
   double _checkMateValue = 1;
-  double _speedValue = 1;
   double _piecesValue = 8;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Chess Radio'),
-          backgroundColor: const Color(0xfff4dd29),
+          title: Text(
+            'Chess Radio',
+            style: GoogleFonts.dancingScript(),
+          ),
+          backgroundColor: Colors.black,
         ),
         body: Center(
           child: new ListView(
@@ -71,10 +75,7 @@ class _ChessRadioState extends State<ChessRadio> {
                 ),
                 VoiceSelector(),
                 Center(
-                  child: ElevatedButton(
-                    child: Text('Start!'),
-                    onPressed: null,
-                  ),
+                  child: StartButton(),
                 )
               ]),
         ),
