@@ -10,30 +10,39 @@ class _PiecesNumberState extends State<PiecesNumber> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text('Number of pieces: '),
-              Text(
-                _piecesValue.round().toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+      margin: const EdgeInsets.all(20.0),
+      child: SizedBox(
+        width: 200,
+        child: Column(
+          children: [
+            Center(
+              child: Row(
+                children: [
+                  // Spaces to center text
+                  Text('         Number of pieces: '),
+                  Text(
+                    _piecesValue.round().toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-            ],
-          ),
-          Slider(
-            value: _piecesValue,
-            min: 4,
-            max: 20,
-            divisions: 16,
-            label: _piecesValue.round().toString() + ' pieces',
-            onChanged: (value) {
-              setState(() {
-                _piecesValue = value;
-              });
-            },
-          ),
-        ],
+            ),
+            Slider(
+              value: _piecesValue,
+              min: 4,
+              max: 20,
+              divisions: 16,
+              // label: _piecesValue.round().toString() + ' pieces',
+              activeColor: Colors.black,
+              inactiveColor: Colors.grey[400],
+              onChanged: (value) {
+                setState(() {
+                  _piecesValue = value;
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -11,6 +11,11 @@ class _ChessRadioDrawerState extends State<ChessRadioDrawer> {
     return Container(
       child: Column(
         children: [
+          AppBar(
+            backgroundColor: Colors.grey,
+            toolbarHeight: 80,
+            title: Text('Chess Radio v1'),
+          ),
           Text('Contact'),
           Text('Feedback'),
           Text('About'),
