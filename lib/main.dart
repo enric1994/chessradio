@@ -27,14 +27,16 @@ class _ChessRadioState extends State<ChessRadio> {
           title: ChessRadioTitle(),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: [
-            PiecesNumber(),
-            CheckMateValue(),
-            VoiceSelector(),
-            StartButton(),
-            // WebFooter(),
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              PiecesNumber(),
+              CheckMateValue(),
+              VoiceSelector(),
+              StartButton(),
+              // WebFooter(),
+            ],
+          ),
         ),
         backgroundColor: Colors.white,
         drawer: Drawer(
