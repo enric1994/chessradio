@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './chessRadioTitle.dart';
 import './track.dart';
+import './chessRadioDrawer.dart';
 
 class PlayListPage extends StatelessWidget {
   final String data;
@@ -17,6 +18,10 @@ class PlayListPage extends StatelessWidget {
           appBar: AppBar(
             title: ChessRadioTitle(),
             backgroundColor: Colors.black,
+          ),
+          backgroundColor: Colors.white,
+          drawer: Drawer(
+            child: ChessRadioDrawer(),
           ),
           body: Center(
               child: ListView(

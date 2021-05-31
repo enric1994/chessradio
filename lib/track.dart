@@ -20,7 +20,7 @@ class _TrackState extends State<Track> {
                 ),
                 Container(
                   child: null,
-                  width: 200,
+                  width: 150,
                   height: 80,
                   margin: EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -34,7 +34,7 @@ class _TrackState extends State<Track> {
                 ),
               ],
             ),
-            width: 300,
+            width: 250,
             height: 100,
             margin: EdgeInsets.all(20),
             decoration: BoxDecoration(
