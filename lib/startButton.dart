@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './playlist.dart';
+import 'ui/screens/playlist_screen.dart';
 
 class StartButton extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class StartButton extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => PlayListPage('test data'),
+                builder: (context) => PlayListScreen('test data'),
               ),
             );
           },

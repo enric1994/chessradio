@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import './chessRadioTitle.dart';
-import './track.dart';
-import './chessRadioDrawer.dart';
+import '../../chessRadioTitle.dart';
+import '../widgets/puzzle_widget.dart';
+import '../../chessRadioDrawer.dart';
 
-class PlayListPage extends StatelessWidget {
+class PlayListScreen extends StatelessWidget {
   final String data;
 
-  PlayListPage(this.data);
+  PlayListScreen(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +37,8 @@ class PlayListPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
-              Track(),
+              PuzzleWidget(),
+              PuzzleWidget(),
             ],
           )),
         ),
