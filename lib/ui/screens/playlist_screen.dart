@@ -5,9 +5,12 @@ import '../widgets/puzzle_widget.dart';
 import '../widgets/chess_radio_drawer_widget.dart';
 
 class PlayListScreen extends StatelessWidget {
-  final String data;
-
-  PlayListScreen(this.data);
+  final audios = <String>[
+    "assets/audio/test.wav",
+    "assets/audio/test.wav",
+    "assets/audio/test.wav",
+  ];
+  PlayListScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +27,13 @@ class PlayListScreen extends StatelessWidget {
             child: ChessRadioDrawerWidget(),
           ),
           body: Center(
-              child: ListView(
-            children: [
-              Container(
-                child: Row(
-                  children: [
-                    Text('Autoplay:'),
-                    Switch(
-                      value: true,
-                      onChanged: null,
-                    ),
-                  ],
-                ),
-              ),
-              PuzzleWidget(),
-              PuzzleWidget(),
-            ],
-          )),
+            child: ListView.builder(
+              itemCount: audios.length,
+              itemBuilder: (context, index) {
+                return PuzzleWidget();
+              },
+            ),
+          ),
         ),
       ),
     );

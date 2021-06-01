@@ -17,7 +17,7 @@ class StartButtonWidget extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => PlayListScreen('test data'),
+                builder: (context) => PlayListScreen(),
               ),
             );
           },

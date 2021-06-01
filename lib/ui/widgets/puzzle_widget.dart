@@ -1,5 +1,5 @@
 import 'package:chessradio/model/track.dart';
-import 'package:chessradio/ui/widgets/play_widget.dart';
+import 'package:chessradio/ui/widgets/play_control_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class ItemWidget extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                PlayControl(),
+                PlayControlWidget(),
                 BarraWidget(),
               ],
             ),

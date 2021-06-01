@@ -2,7 +2,7 @@ import 'package:chessradio/model/track.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-class PlayControl extends StatelessWidget {
+class PlayControlWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<Track>(
