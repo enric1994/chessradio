@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../chessRadioTitle.dart';
+import '../widgets/chess_radio_title_widget.dart';
 import '../widgets/puzzle_widget.dart';
-import '../../chessRadioDrawer.dart';
+import '../widgets/chess_radio_drawer_widget.dart';
 
 class PlayListScreen extends StatelessWidget {
   final String data;
@@ -16,12 +16,12 @@ class PlayListScreen extends StatelessWidget {
         tag: 'playlist',
         child: Scaffold(
           appBar: AppBar(
-            title: ChessRadioTitle(),
+            title: ChessRadioTitleWidget(),
             backgroundColor: Colors.black,
           ),
           backgroundColor: Colors.white,
           drawer: Drawer(
-            child: ChessRadioDrawer(),
+            child: ChessRadioDrawerWidget(),
           ),
           body: Center(
               child: ListView(

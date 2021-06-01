@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PiecesNumber extends StatefulWidget {
+class PiecesNumberWidget extends StatefulWidget {
   @override
-  _PiecesNumberState createState() => _PiecesNumberState();
+  _PiecesNumberWidgetState createState() => _PiecesNumberWidgetState();
 }
 
-class _PiecesNumberState extends State<PiecesNumber> {
+class _PiecesNumberWidgetState extends State<PiecesNumberWidget> {
   double _piecesValue = 8;
   @override
   Widget build(BuildContext context) {

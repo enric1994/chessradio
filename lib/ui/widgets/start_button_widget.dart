@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'ui/screens/playlist_screen.dart';
+import '../screens/playlist_screen.dart';
 
-class StartButton extends StatelessWidget {
+class StartButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

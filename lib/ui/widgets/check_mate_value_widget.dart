@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CheckMateValue extends StatefulWidget {
+class CheckMateValueWidget extends StatefulWidget {
   @override
-  _CheckMateValueState createState() => _CheckMateValueState();
+  _CheckMateValueWidgetState createState() => _CheckMateValueWidgetState();
 }
 
-class _CheckMateValueState extends State<CheckMateValue> {
+class _CheckMateValueWidgetState extends State<CheckMateValueWidget> {
   double _checkMateValue = 2;
   @override
   Widget build(BuildContext context) {

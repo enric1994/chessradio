@@ -11,12 +11,12 @@ final List<String> imgList = [
   'images/Vishy.png',
 ];
 
-class VoiceSelector extends StatefulWidget {
+class VoiceSelectorWidget extends StatefulWidget {
   @override
-  _VoiceSelectorState createState() => _VoiceSelectorState();
+  _VoiceSelectorWidgetState createState() => _VoiceSelectorWidgetState();
 }
 
-class _VoiceSelectorState extends State<VoiceSelector> {
+class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
   var _currentVoice = 'Hikaru';
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ChessRadioDrawer extends StatefulWidget {
+class ChessRadioDrawerWidget extends StatefulWidget {
   @override
-  _ChessRadioDrawerState createState() => _ChessRadioDrawerState();
+  _ChessRadioDrawerWidgetState createState() => _ChessRadioDrawerWidgetState();
 }
 
-class _ChessRadioDrawerState extends State<ChessRadioDrawer> {
+class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
