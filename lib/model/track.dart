@@ -36,9 +36,22 @@ class Track extends ChangeNotifier {
     });
   }
 
-  playAudio() {
-    audioPlayer.play(
+  playFromUrl() async {
+    int result = await audioPlayer.play(
         'https://thegrowingdeveloper.org/files/audios/quiet-time.mp3?b4869097e4');
+    if (result == 1) {
+      // success
+      print('success playing audio from url');
+    }
+  }
+
+  playFromLocal() async {
+    int result =
+        await audioPlayer.play('assets/audios/test.wav', isLocal: true);
+    if (result == 1) {
+      // success
+      print('success playing audio from local');
+    }
   }
 
   pauseAudio() {

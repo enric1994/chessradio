@@ -10,7 +10,7 @@ class PlayControl extends StatelessWidget {
         onTap: () {
           myAudioModel.audioState == "Playing"
               ? myAudioModel.pauseAudio()
-              : myAudioModel.playAudio();
+              : myAudioModel.playFromLocal();
         },
         child: Icon(
           myAudioModel.audioState == "Playing" ? Icons.pause : Icons.play_arrow,
