@@ -21,11 +21,11 @@ class PlayListScreen extends StatelessWidget {
           appBar: AppBar(
             title: ChessRadioTitleWidget(),
             backgroundColor: Colors.black,
+            actions: [
+              ChessRadioDrawerWidget(),
+            ],
           ),
           backgroundColor: Colors.white,
-          drawer: Drawer(
-            child: ChessRadioDrawerWidget(),
-          ),
           body: Center(
             child: ListView.builder(
               itemCount: audios.length,
