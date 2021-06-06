@@ -24,6 +24,7 @@ class PlayListScreen extends StatelessWidget {
             actions: [
               ChessRadioDrawerWidget(),
             ],
+            leading: Icon(Icons.arrow_back),
           ),
           backgroundColor: Colors.white,
           body: Center(
