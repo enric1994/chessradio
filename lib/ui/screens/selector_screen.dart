@@ -17,6 +17,9 @@ class SelectorScreen extends StatelessWidget {
         appBar: AppBar(
           title: ChessRadioTitleWidget(),
           backgroundColor: Colors.black,
+          actions: [
+            ChessRadioDrawerWidget(),
+          ],
         ),
         body: Center(
           child: Column(
@@ -29,9 +32,6 @@ class SelectorScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        drawer: Drawer(
-          child: ChessRadioDrawerWidget(),
-        ),
       ),
     );
   }
