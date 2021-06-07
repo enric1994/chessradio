@@ -8,26 +8,23 @@ class StartButtonWidget extends StatelessWidget {
     return Container(
       width: 200,
       height: 50,
-      child: Hero(
-        tag: 'playlist',
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+        ),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => PlayListScreen(),
             ),
-          ),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => PlayListScreen(),
-              ),
-            );
-          },
-          child: Text(
-            "Start",
-            style: TextStyle(color: Colors.white),
-          ),
+          );
+        },
+        child: Text(
+          "Start",
+          style: TextStyle(color: Colors.white),
         ),
       ),
     );
