@@ -10,6 +10,21 @@ final List<String> imgList = [
 ];
 
 class VoiceSelectorWidget extends StatefulWidget {
+  VoiceSelectorWidget(
+      {Key? key, this.str: 'Hikaru Nakamura', required this.onChanged})
+      : super(key: key);
+
+  final String str;
+  final ValueChanged<String> onChanged;
+
+  void _handlePageChange(int index, CarouselPageChangedReason changeReason) {
+    String str = imgList[index].split('/')[2];
+    if (str.length >= 4) {
+      str = str.substring(0, str.length - 5);
+    }
+    onChanged(str);
+  }
+
   @override
   _VoiceSelectorWidgetState createState() => _VoiceSelectorWidgetState();
 }
@@ -38,17 +53,10 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
                 ),
                 CarouselSlider(
                   options: CarouselOptions(
-                      enlargeCenterPage: true,
-                      viewportFraction: 0.6,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          var str = imgList[index].split('/')[2];
-                          if (str != null && str.length >= 4) {
-                            str = str.substring(0, str.length - 5);
-                          }
-                          _currentVoice = str;
-                        });
-                      }),
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.6,
+                    onPageChanged: widget._handlePageChange,
+                  ),
                   items: imgList
                       .map(
                         (item) => Container(

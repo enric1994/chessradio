@@ -6,8 +6,25 @@ import 'package:flutter/material.dart';
 import '../widgets/chess_radio_title_widget.dart';
 import '../widgets/chess_radio_drawer_widget.dart';
 
-class SelectorScreen extends StatelessWidget {
-  SelectorScreen();
+final List voices = [
+  "Anna Rudolf",
+  "Lile Koridze",
+  "Hikaru Nakamura",
+  "Voyboy",
+];
+
+class SelectorScreen extends StatefulWidget {
+  @override
+  _SelectorScreenState createState() => _SelectorScreenState();
+}
+
+class _SelectorScreenState extends State<SelectorScreen> {
+  String _voice = "Hikaru Nakamura";
+  void _handleVoiceChanged(String newVoice) {
+    setState(() {
+      _voice = newVoice;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +43,10 @@ class SelectorScreen extends StatelessWidget {
               // PiecesNumberWidget(),
               DifficultyWidget(),
               // CheckMateValueWidget(),
-              VoiceSelectorWidget(),
-              StartButtonWidget(),
+              VoiceSelectorWidget(
+                onChanged: _handleVoiceChanged,
+              ),
+              StartButtonWidget(_voice),
             ],
           ),
         ),
