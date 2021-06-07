@@ -1,3 +1,7 @@
+import 'package:chessradio/model/puzzle.dart';
+import 'package:chessradio/ui/screens/selector_screen.dart';
+import 'package:chessradio/ui/widgets/chess_radio_drawer_widget.dart';
+import 'package:chessradio/ui/widgets/chess_radio_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
@@ -6,35 +10,26 @@ import 'package:rxdart/rxdart.dart';
 import 'dart:math';
 
 class PlayListScreen extends StatefulWidget {
+  final List<Puzzle> _puzzlePlaylist;
+
+  PlayListScreen(this._puzzlePlaylist);
+
   @override
   _PlayListScreenState createState() => _PlayListScreenState();
 }
 
 class _PlayListScreenState extends State<PlayListScreen> {
   late AudioPlayer _player;
-
-  final _playlist = ConcatenatingAudioSource(children: [
-    AudioSource.uri(
-      Uri.parse("assets/puzzles/1_challenge_female1.mp3"),
-    ),
-    AudioSource.uri(
-      Uri.parse("assets/puzzles/2_challenge_female2.mp3"),
-    ),
-    AudioSource.uri(
-      Uri.parse("assets/puzzles/3_challenge_male1.mp3"),
-    ),
-    AudioSource.uri(
-      Uri.parse("assets/puzzles/4_challenge_male2.mp3"),
-    ),
-  ]);
+  late ConcatenatingAudioSource _playlist;
 
   @override
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.black,
-    ));
+    _playlist = ConcatenatingAudioSource(
+        children: widget._puzzlePlaylist
+            .map((puzzle) => puzzle.audioPuzzle)
+            .toList());
     _init();
   }
 
@@ -63,43 +58,64 @@ class _PlayListScreenState extends State<PlayListScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: ListView.builder(
-              itemCount: _playlist.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        child: Track(_playlist[index]),
-                        width: 350,
-                        height: 100,
-                        margin: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.0),
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 4,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 70.0,
-                        decoration: BoxDecoration(),
-                        child: Image(
-                          image: AssetImage('./images/solution.png'),
-                          height: 70,
-                          alignment: Alignment.bottomCenter,
-                        ),
-                      ),
-                    ],
+      home: Hero(
+        tag: 'playlist',
+        child: Scaffold(
+          appBar: AppBar(
+            title: ChessRadioTitleWidget(),
+            backgroundColor: Colors.black,
+            actions: [
+              ChessRadioDrawerWidget(),
+            ],
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              // color: Colors.white,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SelectorScreen(),
                   ),
                 );
               },
+            ),
+          ),
+          backgroundColor: Colors.white,
+          body: SafeArea(
+            child: Center(
+              child: ListView.builder(
+                itemCount: _playlist.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Track(_playlist[index]),
+                          width: 350,
+                          height: 100,
+                          margin: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 4,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 70.0,
+                          decoration: BoxDecoration(),
+                          child: Image(
+                            image: AssetImage('./images/solution.png'),
+                            height: 70,
+                            alignment: Alignment.bottomCenter,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -323,25 +339,4 @@ class _SeekBarState extends State<SeekBar> {
   }
 
   Duration get _remaining => widget.duration - widget.position;
-}
-
-class HiddenThumbComponentShape extends SliderComponentShape {
-  @override
-  Size getPreferredSize(bool isEnabled, bool isDiscrete) => Size.zero;
-
-  @override
-  void paint(
-    PaintingContext context,
-    Offset center, {
-    required Animation<double> activationAnimation,
-    required Animation<double> enableAnimation,
-    required bool isDiscrete,
-    required TextPainter labelPainter,
-    required RenderBox parentBox,
-    required SliderThemeData sliderTheme,
-    required TextDirection textDirection,
-    required double value,
-    required double textScaleFactor,
-    required Size sizeWithOverflow,
-  }) {}
 }
