@@ -21,14 +21,20 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
     return Container(
       child: Column(
         children: [
-          Text('Select voice: '),
+          Text(
+            'Select speaker: ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
           Container(
             child: Column(
               children: [
                 SizedBox(height: 5),
                 Text(
                   _currentVoice.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  // style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 CarouselSlider(
                   options: CarouselOptions(
