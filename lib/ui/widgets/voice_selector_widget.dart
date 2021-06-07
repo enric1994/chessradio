@@ -3,12 +3,10 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
-  'images/Hikaru.png',
-  'images/CodeMiko.png',
-  'images/Cramling.png',
-  'images/GothamChess.png',
-  'images/Kosteniuk.png',
-  'images/Vishy.png',
+  'assets/images/Hikaru Nakamura.jpeg',
+  'assets/images/Anna Rudolf.jpeg',
+  'assets/images/Lile Koridze.jpeg',
+  'assets/images/Voyboy.jpeg',
 ];
 
 class VoiceSelectorWidget extends StatefulWidget {
@@ -17,7 +15,7 @@ class VoiceSelectorWidget extends StatefulWidget {
 }
 
 class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
-  var _currentVoice = 'Hikaru';
+  var _currentVoice = 'Anna Rudolf';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,6 +25,7 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
           Container(
             child: Column(
               children: [
+                SizedBox(height: 5),
                 Text(
                   _currentVoice.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -34,12 +33,12 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
                 CarouselSlider(
                   options: CarouselOptions(
                       enlargeCenterPage: true,
-                      viewportFraction: 0.5,
+                      viewportFraction: 0.6,
                       onPageChanged: (index, reason) {
                         setState(() {
-                          var str = imgList[index].split('/')[1];
+                          var str = imgList[index].split('/')[2];
                           if (str != null && str.length >= 4) {
-                            str = str.substring(0, str.length - 4);
+                            str = str.substring(0, str.length - 5);
                           }
                           _currentVoice = str;
                         });
@@ -70,7 +69,7 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
                 ),
               ],
             ),
-            margin: const EdgeInsets.all(20.0),
+            margin: const EdgeInsets.all(15.0),
             // padding: const EdgeInsets.all(5.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
@@ -79,7 +78,7 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
                 width: 2.0,
               ),
             ),
-            width: 300,
+            width: 500,
           ),
         ],
       ),
