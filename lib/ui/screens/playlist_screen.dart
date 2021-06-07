@@ -1,3 +1,4 @@
+import 'package:chessradio/ui/screens/selector_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/chess_radio_title_widget.dart';
@@ -24,7 +25,17 @@ class PlayListScreen extends StatelessWidget {
             actions: [
               ChessRadioDrawerWidget(),
             ],
-            leading: Icon(Icons.arrow_back),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              // color: Colors.white,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SelectorScreen(),
+                  ),
+                );
+              },
+            ),
           ),
           backgroundColor: Colors.white,
           body: Center(
