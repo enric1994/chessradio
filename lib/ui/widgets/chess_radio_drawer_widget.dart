@@ -9,19 +9,25 @@ class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          AppBar(
-            backgroundColor: Colors.grey,
-            toolbarHeight: 80,
-            title: Text('Chess Radio v1'),
+      child: PopupMenuButton<Text>(itemBuilder: (context) {
+        return [
+          PopupMenuItem(
+            child: Text(
+              'About',
+            ),
           ),
-          Text('Contact'),
-          Text('Feedback'),
-          Text('About'),
-          Text('Donate')
-        ],
-      ),
+          PopupMenuItem(
+            child: Text(
+              'Feedback',
+            ),
+          ),
+          PopupMenuItem(
+            child: Text(
+              'Contact',
+            ),
+          ),
+        ];
+      }),
     );
   }
 }

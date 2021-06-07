@@ -20,7 +20,7 @@ class ChessRadioTitleWidget extends StatelessWidget {
               ),
               TextSpan(
                 // Add spaces to centre text
-                text: ' Radio     ',
+                text: ' Radio',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 32,

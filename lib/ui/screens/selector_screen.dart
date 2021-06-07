@@ -1,5 +1,4 @@
-import 'package:chessradio/ui/widgets/check_mate_value_widget.dart';
-import 'package:chessradio/ui/widgets/pieces_number_widget.dart';
+import 'package:chessradio/ui/widgets/difficulty_widget.dart';
 import 'package:chessradio/ui/widgets/start_button_widget.dart';
 import 'package:chessradio/ui/widgets/voice_selector_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,21 +16,22 @@ class SelectorScreen extends StatelessWidget {
         appBar: AppBar(
           title: ChessRadioTitleWidget(),
           backgroundColor: Colors.black,
+          actions: [
+            ChessRadioDrawerWidget(),
+          ],
         ),
         body: Center(
           child: Column(
             children: [
-              PiecesNumberWidget(),
-              CheckMateValueWidget(),
+              // PiecesNumberWidget(),
+              DifficultyWidget(),
+              // CheckMateValueWidget(),
               VoiceSelectorWidget(),
               StartButtonWidget(),
             ],
           ),
         ),
         backgroundColor: Colors.white,
-        drawer: Drawer(
-          child: ChessRadioDrawerWidget(),
-        ),
       ),
     );
   }
