@@ -15,7 +15,7 @@ class VoiceSelectorWidget extends StatefulWidget {
 }
 
 class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
-  var _currentVoice = 'Anna Rudolf';
+  var _currentVoice = 'Hikaru Nakamura';
   @override
   Widget build(BuildContext context) {
     return Container(
