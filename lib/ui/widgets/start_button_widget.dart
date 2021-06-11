@@ -6,63 +6,95 @@ import '../screens/playlist_screen.dart';
 final data = [
   Data(
     {
-      "Anna Rudolf": "assets/puzzles/1_challenge_female1.mp3",
-      "Lile Koridze": "assets/puzzles/1_challenge_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/1_challenge_male1.mp3",
-      "Voyboy": "assets/puzzles/1_challenge_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_challenge_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_challenge_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_challenge_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_challenge_male2.mp3",
     },
     {
-      "Anna Rudolf": "assets/puzzles/1_solution_female1.mp3",
-      "Lile Koridze": "assets/puzzles/1_solution_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/1_solution_male1.mp3",
-      "Voyboy": "assets/puzzles/1_solution_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_solution_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_solution_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_solution_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1_solution_male2.mp3",
     },
-    "assets/puzzles/1.jpeg",
+    "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/1.jpeg",
   ),
   Data(
     {
-      "Anna Rudolf": "assets/puzzles/2_challenge_female1.mp3",
-      "Lile Koridze": "assets/puzzles/2_challenge_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/2_challenge_male1.mp3",
-      "Voyboy": "assets/puzzles/2_challenge_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_challenge_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_challenge_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_challenge_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_challenge_male2.mp3",
     },
     {
-      "Anna Rudolf": "assets/puzzles/2_solution_female1.mp3",
-      "Lile Koridze": "assets/puzzles/2_solution_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/2_solution_male1.mp3",
-      "Voyboy": "assets/puzzles/2_solution_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_solution_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_solution_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_solution_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2_solution_male2.mp3",
     },
-    "assets/puzzles/2.jpeg",
+    "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/2.jpeg",
   ),
   Data(
     {
-      "Anna Rudolf": "assets/puzzles/3_challenge_female1.mp3",
-      "Lile Koridze": "assets/puzzles/3_challenge_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/3_challenge_male1.mp3",
-      "Voyboy": "assets/puzzles/3_challenge_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_challenge_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_challenge_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_challenge_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_challenge_male2.mp3",
     },
     {
-      "Anna Rudolf": "assets/puzzles/3_solution_female1.mp3",
-      "Lile Koridze": "assets/puzzles/3_solution_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/3_solution_male1.mp3",
-      "Voyboy": "assets/puzzles/3_solution_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_solution_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_solution_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_solution_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3_solution_male2.mp3",
     },
-    "assets/puzzles/3.jpeg",
+    "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/3.jpeg",
   ),
   Data(
     {
-      "Anna Rudolf": "assets/puzzles/4_challenge_female1.mp3",
-      "Lile Koridze": "assets/puzzles/4_challenge_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/4_challenge_male1.mp3",
-      "Voyboy": "assets/puzzles/4_challenge_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_challenge_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_challenge_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_challenge_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_challenge_male2.mp3",
     },
     {
-      "Anna Rudolf": "assets/puzzles/4_solution_female1.mp3",
-      "Lile Koridze": "assets/puzzles/4_solution_female2.mp3",
-      "Hikaru Nakamura": "assets/puzzles/4_solution_male1.mp3",
-      "Voyboy": "assets/puzzles/4_solution_male2.mp3",
+      "Anna Rudolf":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_solution_female1.mp3",
+      "Lile Koridze":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_solution_female2.mp3",
+      "Hikaru Nakamura":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_solution_male1.mp3",
+      "Voyboy":
+          "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4_solution_male2.mp3",
     },
-    "assets/puzzles/4.jpeg",
+    "https://github.com/enric1994/chessradio/raw/master/assets/puzzles/4.jpeg",
   ),
 ];
 
