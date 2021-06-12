@@ -1,3 +1,5 @@
+import 'package:chessradio/model/data.dart';
+import 'package:chessradio/model/voice.dart';
 import 'package:chessradio/ui/widgets/difficulty_widget.dart';
 import 'package:chessradio/ui/widgets/start_button_widget.dart';
 import 'package:chessradio/ui/widgets/voice_selector_widget.dart';
@@ -6,23 +8,23 @@ import 'package:flutter/material.dart';
 import '../widgets/chess_radio_title_widget.dart';
 import '../widgets/chess_radio_drawer_widget.dart';
 
-final List voices = [
-  "Anna Rudolf",
-  "Lile Koridze",
-  "Hikaru Nakamura",
-  "Voyboy",
-];
-
 class SelectorScreen extends StatefulWidget {
   @override
   _SelectorScreenState createState() => _SelectorScreenState();
 }
 
 class _SelectorScreenState extends State<SelectorScreen> {
-  String _voice = "Hikaru Nakamura";
-  void _handleVoiceChanged(String newVoice) {
+  late Voice _selectedVoice;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedVoice = voices[0];
+  }
+
+  void _handleVoiceChanged(Voice newVoice) {
     setState(() {
-      _voice = newVoice;
+      _selectedVoice = newVoice;
     });
   }
 
@@ -40,13 +42,12 @@ class _SelectorScreenState extends State<SelectorScreen> {
         body: Center(
           child: Column(
             children: [
-              // PiecesNumberWidget(),
               DifficultyWidget(),
-              // CheckMateValueWidget(),
               VoiceSelectorWidget(
+                voices: voices,
                 onChanged: _handleVoiceChanged,
               ),
-              StartButtonWidget(_voice),
+              StartButtonWidget(_selectedVoice),
             ],
           ),
         ),

@@ -1,4 +1,3 @@
-import 'package:chessradio/model/puzzle.dart';
 import 'package:chessradio/ui/screens/selector_screen.dart';
 import 'package:chessradio/ui/widgets/chess_radio_drawer_widget.dart';
 import 'package:chessradio/ui/widgets/chess_radio_title_widget.dart';
@@ -10,7 +9,7 @@ import 'package:rxdart/rxdart.dart';
 import 'dart:math';
 
 class PlayListScreen extends StatefulWidget {
-  final List<Puzzle> _puzzlePlaylist;
+  final List _puzzlePlaylist;
 
   PlayListScreen(this._puzzlePlaylist);
 
@@ -28,7 +27,9 @@ class _PlayListScreenState extends State<PlayListScreen> {
     _player = AudioPlayer();
     _playlist = ConcatenatingAudioSource(
         children: widget._puzzlePlaylist
-            .map((puzzle) => puzzle.audioPuzzle)
+            .map((puzzle) => AudioSource.uri(
+                  Uri.parse(puzzle.audioPuzzle),
+                ))
             .toList());
     _init();
   }

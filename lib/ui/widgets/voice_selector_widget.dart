@@ -1,30 +1,33 @@
+import 'package:chessradio/model/voice.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-final List<String> imgList = [
-  'assets/images/Hikaru Nakamura.jpeg',
-  'assets/images/Anna Rudolf.jpeg',
-  'assets/images/Lile Koridze.jpeg',
-  'assets/images/Voyboy.jpeg',
-];
-
 class VoiceSelectorWidget extends StatefulWidget {
-  VoiceSelectorWidget({Key? key, required this.onChanged}) : super(key: key);
+  final List<Voice> voices;
+  final ValueChanged<Voice> onChanged;
 
-  final ValueChanged<String> onChanged;
+  VoiceSelectorWidget({Key? key, required this.voices, required this.onChanged})
+      : super(key: key);
 
   @override
   _VoiceSelectorWidgetState createState() => _VoiceSelectorWidgetState();
 }
 
 class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
-  String _currentVoice = 'Hikaru Nakamura';
+  late Voice _currentVoice;
 
-  void changeVoice(String newVoice) {
+  @override
+  void initState() {
+    super.initState();
+    _currentVoice = widget.voices[0];
+  }
+
+  void changeVoice(Voice newVoice) {
     setState(() {
       _currentVoice = newVoice;
     });
+    widget.onChanged(_currentVoice);
   }
 
   @override
@@ -45,27 +48,20 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
                 SizedBox(height: 5),
                 Text(
                   _currentVoice.toString(),
-                  // style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 CarouselSlider(
                   options: CarouselOptions(
                       enlargeCenterPage: true,
                       viewportFraction: 0.6,
                       onPageChanged: (index, reason) {
-                        var str = imgList[index].split('/')[2];
-                        if (str.length >= 4) {
-                          str = str.substring(0, str.length - 5);
-                        }
-                        setState(() {
-                          _currentVoice = str;
-                        });
-                        widget.onChanged(_currentVoice);
+                        changeVoice(widget.voices[index]);
                       }),
-                  items: imgList
+                  items: widget.voices
+                      .map((voice) => voice.image)
+                      .toList()
                       .map(
                         (item) => Container(
                           margin: const EdgeInsets.all(5.0),
-                          // padding: const EdgeInsets.all(0.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.0),
                             border: Border.all(
@@ -88,7 +84,6 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
               ],
             ),
             margin: const EdgeInsets.all(15.0),
-            // padding: const EdgeInsets.all(5.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               border: Border.all(
