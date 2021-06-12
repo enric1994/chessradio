@@ -31,7 +31,7 @@ class _SelectorScreenState extends State<SelectorScreen> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: ChessRadioTitleWidget(),
+          title: ChessRadioTitleWidget('Chess Radio'),
           backgroundColor: Colors.black,
           actions: [
             ChessRadioDrawerWidget(),

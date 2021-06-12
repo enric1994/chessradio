@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChessRadioTitleWidget extends StatelessWidget {
+  String titleText;
+
+  ChessRadioTitleWidget(this.titleText);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,15 +16,7 @@ class ChessRadioTitleWidget extends StatelessWidget {
             style: GoogleFonts.dancingScript(),
             children: <TextSpan>[
               TextSpan(
-                text: 'Chess',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
-                ),
-              ),
-              TextSpan(
-                // Add spaces to centre text
-                text: ' Radio',
+                text: titleText,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 32,

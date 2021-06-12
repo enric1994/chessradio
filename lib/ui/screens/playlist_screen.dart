@@ -62,7 +62,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
         tag: 'playlist',
         child: Scaffold(
           appBar: AppBar(
-            title: ChessRadioTitleWidget(),
+            title: ChessRadioTitleWidget('Train'),
             backgroundColor: Colors.black,
             actions: [
               ChessRadioDrawerWidget(),
@@ -90,7 +90,10 @@ class _PlayListScreenState extends State<PlayListScreen> {
                       children: [
                         Container(
                           child: Track(_playlist[index]),
-                          width: 350,
+                          constraints:
+                              BoxConstraints(minWidth: 250, maxWidth: 400),
+
+                          // width: 200,
                           height: 100,
                           margin: EdgeInsets.all(20),
                           decoration: BoxDecoration(
@@ -98,19 +101,14 @@ class _PlayListScreenState extends State<PlayListScreen> {
                             color: Colors.white,
                             border: Border.all(
                               color: Colors.black,
-                              width: 4,
+                              width: 1,
                             ),
                           ),
                         ),
                         Container(
-                          width: 70.0,
-                          decoration: BoxDecoration(),
-                          child: Image(
-                            image: AssetImage('./images/solution.png'),
-                            height: 70,
-                            alignment: Alignment.bottomCenter,
-                          ),
-                        ),
+                            // width: 70.0,
+                            decoration: BoxDecoration(),
+                            child: Icon(Icons.remove_red_eye)),
                       ],
                     ),
                   );
@@ -175,26 +173,29 @@ class _TrackState extends State<Track> {
                 processingState == ProcessingState.buffering) {
               return Container(
                 margin: EdgeInsets.all(8.0),
-                width: 64.0,
-                height: 64.0,
-                child: CircularProgressIndicator(),
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  strokeWidth: 5,
+                  color: Colors.black,
+                ),
               );
             } else if (playing != true) {
               return IconButton(
                 icon: Icon(Icons.play_arrow),
-                iconSize: 64.0,
+                iconSize: 40,
                 onPressed: widget._player.play,
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
                 icon: Icon(Icons.pause),
-                iconSize: 64.0,
+                iconSize: 40,
                 onPressed: widget._player.pause,
               );
             } else {
               return IconButton(
-                icon: Icon(Icons.replay),
-                iconSize: 64.0,
+                icon: Icon(Icons.play_arrow),
+                iconSize: 40,
                 onPressed: () => widget._player.seek(Duration.zero,
                     index: widget._player.effectiveIndices!.first),
               );
@@ -274,7 +275,7 @@ class _SeekBarState extends State<SeekBar> {
     super.didChangeDependencies();
 
     _sliderThemeData = SliderTheme.of(context).copyWith(
-      trackHeight: 2.0,
+      trackHeight: 5.0,
     );
   }
 
@@ -284,8 +285,10 @@ class _SeekBarState extends State<SeekBar> {
       children: [
         SliderTheme(
           data: _sliderThemeData.copyWith(
-            activeTrackColor: Colors.blue.shade100,
+            activeTrackColor: Colors.grey,
             inactiveTrackColor: Colors.grey.shade300,
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0),
+            trackHeight: 1,
           ),
           child: ExcludeSemantics(
             child: Slider(
@@ -311,7 +314,10 @@ class _SeekBarState extends State<SeekBar> {
         ),
         SliderTheme(
           data: _sliderThemeData.copyWith(
-            inactiveTrackColor: Colors.transparent,
+            inactiveTrackColor: Colors.grey,
+            activeTrackColor: Colors.black,
+            thumbColor: Colors.black,
+            thumbShape: RoundSliderThumbShape(),
           ),
           child: Slider(
             min: 0.0,
@@ -338,5 +344,5 @@ class _SeekBarState extends State<SeekBar> {
     );
   }
 
-  Duration get _remaining => widget.duration - widget.position;
+  // Duration get _remaining => widget.duration - widget.position;
 }

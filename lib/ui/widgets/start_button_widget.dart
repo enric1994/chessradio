@@ -139,7 +139,7 @@ class StartButtonWidget extends StatelessWidget {
         },
         child: Text(
           "Start",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
     );

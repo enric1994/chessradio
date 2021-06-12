@@ -70,7 +70,7 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
                             borderRadius: BorderRadius.circular(15.0),
                             border: Border.all(
                               color: Colors.black,
-                              width: 5.0,
+                              width: 3,
                             ),
                           ),
                           child: ClipRRect(
@@ -93,7 +93,7 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
               borderRadius: BorderRadius.circular(15.0),
               border: Border.all(
                 color: Colors.black,
-                width: 2.0,
+                width: 1.0,
               ),
             ),
             width: 500,
