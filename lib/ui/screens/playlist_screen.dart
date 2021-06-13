@@ -20,6 +20,7 @@ class PlayListScreen extends StatefulWidget {
 class _PlayListScreenState extends State<PlayListScreen> {
   late AudioPlayer _player;
   late ConcatenatingAudioSource _playlist;
+  late ConcatenatingAudioSource _solutionPlaylist;
 
   @override
   void initState() {
@@ -31,23 +32,12 @@ class _PlayListScreenState extends State<PlayListScreen> {
                   Uri.parse(puzzle.audioPuzzle),
                 ))
             .toList());
-    _init();
-  }
-
-  Future<void> _init() async {
-    final session = await AudioSession.instance;
-    await session.configure(AudioSessionConfiguration.speech());
-    // Listen to errors during playback.
-    _player.playbackEventStream.listen((event) {},
-        onError: (Object e, StackTrace stackTrace) {
-      print('A stream error occurred: $e');
-    });
-    try {
-      await _player.setAudioSource(_playlist);
-    } catch (e) {
-      // Catch load errors: 404, invalid url ...
-      print("Error loading playlist: $e");
-    }
+    _solutionPlaylist = ConcatenatingAudioSource(
+        children: widget._puzzlePlaylist
+            .map((puzzle) => AudioSource.uri(
+                  Uri.parse(puzzle.audioSolutionAsset),
+                ))
+            .toList());
   }
 
   @override
@@ -70,7 +60,6 @@ class _PlayListScreenState extends State<PlayListScreen> {
             ],
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              // color: Colors.white,
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -83,37 +72,54 @@ class _PlayListScreenState extends State<PlayListScreen> {
           backgroundColor: Colors.white,
           body: SafeArea(
             child: Center(
-              child: ListView.builder(
-                itemCount: _playlist.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Track(_playlist[index]),
-                          constraints:
-                              BoxConstraints(minWidth: 250, maxWidth: 400),
-
-                          // width: 200,
-                          height: 100,
-                          margin: EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            ),
+              child: Container(
+                child: StreamBuilder<SequenceState?>(
+                  stream: _player.sequenceStateStream,
+                  builder: (context, snapshot) {
+                    final state = snapshot.data;
+                    final sequence = state?.sequence ?? [];
+                    return ListView.builder(
+                      itemCount: _playlist.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          child: Row(
+                            children: [
+                              Container(
+                                constraints: BoxConstraints(
+                                    minWidth: 250, maxWidth: 400),
+                                height: 200,
+                                margin: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  color: Colors.white,
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Track(
+                                    _playlist[index], _solutionPlaylist[index]),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(),
+                                child: IconButton(
+                                  icon: Icon(Icons.remove_red_eye),
+                                  onPressed: () async {
+                                    await showDialog(
+                                        context: context,
+                                        builder: (_) => ImageDialog(widget
+                                            ._puzzlePlaylist[index]
+                                            .imageSolutionAsset));
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Container(
-                            // width: 70.0,
-                            decoration: BoxDecoration(),
-                            child: Icon(Icons.remove_red_eye)),
-                      ],
-                    ),
-                  );
-                },
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ),
           ),
@@ -124,16 +130,39 @@ class _PlayListScreenState extends State<PlayListScreen> {
 }
 
 class Track extends StatefulWidget {
-  final AudioPlayer _player = AudioPlayer();
   final AudioSource source;
+  final AudioSource solutionSource;
 
-  Track(this.source);
+  Track(this.source, this.solutionSource);
 
   @override
   _TrackState createState() => _TrackState();
 }
 
 class _TrackState extends State<Track> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Tracko(widget.source),
+        Tracko(widget.solutionSource),
+      ],
+    );
+  }
+}
+
+class Tracko extends StatefulWidget {
+  final AudioPlayer _player = AudioPlayer();
+  final AudioSource source;
+
+  Tracko(this.source);
+
+  @override
+  _TrackoState createState() => _TrackoState();
+}
+
+class _TrackoState extends State<Tracko> {
   @override
   void initState() {
     super.initState();
@@ -195,7 +224,7 @@ class _TrackState extends State<Track> {
               );
             } else {
               return IconButton(
-                icon: Icon(Icons.play_arrow),
+                icon: Icon(Icons.replay),
                 iconSize: 40,
                 onPressed: () => widget._player.seek(Duration.zero,
                     index: widget._player.effectiveIndices!.first),
@@ -344,6 +373,25 @@ class _SeekBarState extends State<SeekBar> {
       ],
     );
   }
+}
 
-  // Duration get _remaining => widget.duration - widget.position;
+class ImageDialog extends StatelessWidget {
+  String asset;
+
+  ImageDialog(this.asset);
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Container(
+        width: 200,
+        height: 200,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: ExactAssetImage(asset),
+                fit:
+                    BoxFit.fill)), // check CORS if we want to use network image
+      ),
+    );
+  }
 }

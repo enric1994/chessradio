@@ -1,10 +1,11 @@
+import 'package:chessradio/model/puzzle.dart';
 import 'package:chessradio/model/voice.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/playlist_screen.dart';
 
 class StartButtonWidget extends StatelessWidget {
-  late List _puzzles;
+  late List<Puzzle> _puzzles;
 
   StartButtonWidget(Voice voice) {
     _puzzles = voice.tracks;

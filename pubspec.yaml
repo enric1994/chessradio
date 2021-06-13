@@ -55,6 +55,7 @@ flutter:
   assets:
     - assets/audios/
     - assets/images/
+    - assets/puzzles/
     # /CodeMiko.png
     # - images/Cramling.png
     # - images/GothamChess.png

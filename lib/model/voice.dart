@@ -9,5 +9,5 @@ class Voice {
 
   String get name => _name;
   String get image => _image;
-  List get tracks => _tracks;
+  List<Puzzle> get tracks => _tracks;
 }

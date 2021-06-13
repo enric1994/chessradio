@@ -56,7 +56,6 @@ class _MyAppState extends State<ExampleScreen> {
       ),
     ),
   ]);
-  int _addedCount = 0;
 
   @override
   void initState() {
@@ -100,7 +99,10 @@ class _MyAppState extends State<ExampleScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Play button
               ControlButtons(_player),
+
+              // Barra
               StreamBuilder<Duration?>(
                 stream: _player.durationStream,
                 builder: (context, snapshot) {
@@ -137,6 +139,8 @@ class _MyAppState extends State<ExampleScreen> {
               SizedBox(height: 8.0),
               Container(
                 height: 240.0,
+
+                // Lista
                 child: StreamBuilder<SequenceState?>(
                   stream: _player.sequenceStateStream,
                   builder: (context, snapshot) {
@@ -164,8 +168,8 @@ class _MyAppState extends State<ExampleScreen> {
                             },
                             child: Material(
                               color: i == state!.currentIndex
-                                  ? Colors.grey.shade300
-                                  : null,
+                                  ? Colors.blue.shade300
+                                  : Colors.yellow.shade300,
                               child: ListTile(
                                 title: Text(sequence[i].tag.title as String),
                                 onTap: () {
