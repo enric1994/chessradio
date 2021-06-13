@@ -87,7 +87,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
                               Container(
                                 constraints: BoxConstraints(
                                     minWidth: 250, maxWidth: 400),
-                                height: 200,
+                                height: 150,
                                 margin: EdgeInsets.all(20),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.0),
@@ -97,8 +97,13 @@ class _PlayListScreenState extends State<PlayListScreen> {
                                     width: 1,
                                   ),
                                 ),
-                                child: Track(
-                                    _playlist[index], _solutionPlaylist[index]),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Track(_playlist[index]),
+                                    Track(_solutionPlaylist[index]),
+                                  ],
+                                ),
                               ),
                               Container(
                                 decoration: BoxDecoration(),
@@ -130,39 +135,16 @@ class _PlayListScreenState extends State<PlayListScreen> {
 }
 
 class Track extends StatefulWidget {
+  final AudioPlayer _player = AudioPlayer();
   final AudioSource source;
-  final AudioSource solutionSource;
 
-  Track(this.source, this.solutionSource);
+  Track(this.source);
 
   @override
   _TrackState createState() => _TrackState();
 }
 
 class _TrackState extends State<Track> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Tracko(widget.source),
-        Tracko(widget.solutionSource),
-      ],
-    );
-  }
-}
-
-class Tracko extends StatefulWidget {
-  final AudioPlayer _player = AudioPlayer();
-  final AudioSource source;
-
-  Tracko(this.source);
-
-  @override
-  _TrackoState createState() => _TrackoState();
-}
-
-class _TrackoState extends State<Tracko> {
   @override
   void initState() {
     super.initState();
@@ -376,7 +358,7 @@ class _SeekBarState extends State<SeekBar> {
 }
 
 class ImageDialog extends StatelessWidget {
-  String asset;
+  final String asset;
 
   ImageDialog(this.asset);
 
