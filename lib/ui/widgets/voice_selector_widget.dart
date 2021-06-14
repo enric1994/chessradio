@@ -49,7 +49,7 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
               children: [
                 SizedBox(height: 5),
                 Text(
-                  _currentVoice.toString(),
+                  _currentVoice.name,
                   style: GoogleFonts.montserrat(
                     color: Colors.black,
                     fontSize: 16,
