@@ -2,6 +2,7 @@ import 'package:chessradio/model/voice.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VoiceSelectorWidget extends StatefulWidget {
   final List<Voice> voices;
@@ -37,9 +38,10 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
         children: [
           Text(
             'Select speaker: ',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
+            style: GoogleFonts.montserrat(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
             ),
           ),
           Container(
@@ -47,7 +49,12 @@ class _VoiceSelectorWidgetState extends State<VoiceSelectorWidget> {
               children: [
                 SizedBox(height: 5),
                 Text(
-                  _currentVoice.toString(),
+                  _currentVoice.name,
+                  style: GoogleFonts.montserrat(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 CarouselSlider(
                   options: CarouselOptions(

@@ -53,7 +53,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
         tag: 'playlist',
         child: Scaffold(
           appBar: AppBar(
-            title: ChessRadioTitleWidget('Train'),
+            title: ChessRadioTitleWidget('Train', false),
             backgroundColor: Colors.black,
             actions: [
               ChessRadioDrawerWidget(),
@@ -76,50 +76,56 @@ class _PlayListScreenState extends State<PlayListScreen> {
                 child: StreamBuilder<SequenceState?>(
                   stream: _player.sequenceStateStream,
                   builder: (context, snapshot) {
-                    final state = snapshot.data;
-                    final sequence = state?.sequence ?? [];
+                    // final state = snapshot.data;
+                    // final sequence = state?.sequence ?? [];
                     return ListView.builder(
                       itemCount: _playlist.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          child: Row(
-                            children: [
-                              Container(
-                                constraints: BoxConstraints(
-                                    minWidth: 250, maxWidth: 400),
-                                height: 150,
-                                margin: EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: Colors.white,
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Track(_playlist[index]),
-                                    Track(_solutionPlaylist[index]),
-                                  ],
+                          child: Row(children: [
+                            Container(
+                              constraints:
+                                  BoxConstraints(minWidth: 250, maxWidth: 400),
+                              // height: 150,
+                              margin: EdgeInsets.only(
+                                top: 10,
+                                bottom: 10,
+                                left: 20,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.0),
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Colors.black,
+                                  width: 1,
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(),
-                                child: IconButton(
-                                  icon: Icon(Icons.remove_red_eye),
-                                  onPressed: () async {
-                                    await showDialog(
-                                        context: context,
-                                        builder: (_) => ImageDialog(widget
-                                            ._puzzlePlaylist[index]
-                                            .imageSolutionAsset));
-                                  },
-                                ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Track(_playlist[index]),
+                                  Track(_solutionPlaylist[index]),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            // Container(
+                            // child:
+                            Align(
+                              alignment: Alignment.center,
+                              // mainAxisAlignment: MainAxisAlignment.end,
+                              child: (IconButton(
+                                icon: Icon(Icons.remove_red_eye, size: 30),
+                                onPressed: () async {
+                                  await showDialog(
+                                      context: context,
+                                      builder: (_) => ImageDialog(widget
+                                          ._puzzlePlaylist[index]
+                                          .imageSolutionAsset));
+                                },
+                              )),
+                              // decoration: BoxDecoration(),
+                            ),
+                          ]),
                         );
                       },
                     );
