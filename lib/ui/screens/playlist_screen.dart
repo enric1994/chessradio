@@ -53,7 +53,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
         tag: 'playlist',
         child: Scaffold(
           appBar: AppBar(
-            title: ChessRadioTitleWidget('Train'),
+            title: ChessRadioTitleWidget('Train', false),
             backgroundColor: Colors.black,
             actions: [
               ChessRadioDrawerWidget(),
@@ -76,8 +76,8 @@ class _PlayListScreenState extends State<PlayListScreen> {
                 child: StreamBuilder<SequenceState?>(
                   stream: _player.sequenceStateStream,
                   builder: (context, snapshot) {
-                    final state = snapshot.data;
-                    final sequence = state?.sequence ?? [];
+                    // final state = snapshot.data;
+                    // final sequence = state?.sequence ?? [];
                     return ListView.builder(
                       itemCount: _playlist.length,
                       itemBuilder: (context, index) {

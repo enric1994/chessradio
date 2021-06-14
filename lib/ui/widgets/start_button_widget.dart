@@ -1,6 +1,7 @@
 import 'package:chessradio/model/puzzle.dart';
 import 'package:chessradio/model/voice.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/playlist_screen.dart';
 
@@ -32,7 +33,11 @@ class StartButtonWidget extends StatelessWidget {
         },
         child: Text(
           "Start",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: GoogleFonts.montserrat(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ),
     );

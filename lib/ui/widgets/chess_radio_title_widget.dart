@@ -4,16 +4,25 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ChessRadioTitleWidget extends StatelessWidget {
   String titleText;
+  bool logo;
+  var textFont;
 
-  ChessRadioTitleWidget(this.titleText);
+  ChessRadioTitleWidget(this.titleText, this.logo);
 
   @override
   Widget build(BuildContext context) {
+    if (logo) {
+      textFont = GoogleFonts.dancingScript();
+    } else {
+      textFont = GoogleFonts.montserrat(
+        fontWeight: FontWeight.w200,
+      );
+    }
     return Container(
       child: Center(
         child: RichText(
           text: TextSpan(
-            style: GoogleFonts.dancingScript(),
+            style: textFont,
             children: <TextSpan>[
               TextSpan(
                 text: titleText,

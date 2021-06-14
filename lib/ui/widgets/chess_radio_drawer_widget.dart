@@ -1,3 +1,5 @@
+import 'package:chessradio/ui/screens/about_screen.dart';
+import 'package:chessradio/ui/screens/feedback_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChessRadioDrawerWidget extends StatefulWidget {
@@ -9,21 +11,34 @@ class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: PopupMenuButton<Text>(itemBuilder: (context) {
+      child: PopupMenuButton<ElevatedButton>(itemBuilder: (context) {
         return [
           PopupMenuItem(
-            child: Text(
-              'About',
+            child: ElevatedButton(
+              child: Text(
+                'About',
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AboutScreen(),
+                  ),
+                );
+              },
             ),
           ),
           PopupMenuItem(
-            child: Text(
-              'Feedback',
-            ),
-          ),
-          PopupMenuItem(
-            child: Text(
-              'Contact',
+            child: ElevatedButton(
+              child: Text(
+                'Feedback',
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => FeedbackScreen(),
+                  ),
+                );
+              },
             ),
           ),
         ];
@@ -31,3 +46,11 @@ class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
     );
   }
 }
+
+// onPressed: () {
+//                 Navigator.of(context).push(
+//                   MaterialPageRoute(
+//                     builder: (context) => SelectorScreen(),
+//                   ),
+//                 );
+//               },

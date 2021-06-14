@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DifficultyWidget extends StatefulWidget {
   @override
@@ -19,9 +20,24 @@ class _DifficultyWidgetState extends State<DifficultyWidget> {
             children: [
               Text(
                 _difficulty,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: GoogleFonts.montserrat(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w200,
+                ),
+                // TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              Text(_difficultyValue.round().toString()),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                _difficultyValue.round().toString(),
+                style: GoogleFonts.montserrat(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
               // style: TextStyle(fontWeight: FontWeight.bold)),
               Slider(
                 value: _difficultyValue,
