@@ -28,7 +28,7 @@ class _DifficultyWidgetState extends State<DifficultyWidget> {
                 // TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
               Text(
                 _difficultyValue.round().toString(),

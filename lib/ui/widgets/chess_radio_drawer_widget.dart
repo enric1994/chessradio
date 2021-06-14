@@ -1,6 +1,7 @@
 import 'package:chessradio/ui/screens/about_screen.dart';
 import 'package:chessradio/ui/screens/feedback_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChessRadioDrawerWidget extends StatefulWidget {
   @override
@@ -15,8 +16,19 @@ class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
         return [
           PopupMenuItem(
             child: ElevatedButton(
-              child: Text(
-                'About',
+              child: Center(
+                child: Text(
+                  'About',
+                  style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300),
+                ),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Colors.black,
+                ),
               ),
               onPressed: () {
                 Navigator.of(context).push(
@@ -29,8 +41,19 @@ class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
           ),
           PopupMenuItem(
             child: ElevatedButton(
-              child: Text(
-                'Feedback',
+              child: Center(
+                child: Text(
+                  'Feedback',
+                  style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300),
+                ),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Colors.black,
+                ),
               ),
               onPressed: () {
                 Navigator.of(context).push(
