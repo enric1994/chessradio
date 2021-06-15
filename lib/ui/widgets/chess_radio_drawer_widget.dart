@@ -12,60 +12,63 @@ class _ChessRadioDrawerWidgetState extends State<ChessRadioDrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: PopupMenuButton<ElevatedButton>(itemBuilder: (context) {
-        return [
-          PopupMenuItem(
-            child: ElevatedButton(
-              child: Center(
-                child: Text(
-                  'About',
-                  style: GoogleFonts.montserrat(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300),
-                ),
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.black,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => AboutScreen(),
+      child: PopupMenuButton<ElevatedButton>(
+          color: Colors.white,
+          enabled: true,
+          itemBuilder: (context) {
+            return [
+              PopupMenuItem(
+                child: ElevatedButton(
+                  child: Center(
+                    child: Text(
+                      'About',
+                      style: GoogleFonts.montserrat(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300),
+                    ),
                   ),
-                );
-              },
-            ),
-          ),
-          PopupMenuItem(
-            child: ElevatedButton(
-              child: Center(
-                child: Text(
-                  'Feedback',
-                  style: GoogleFonts.montserrat(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300),
-                ),
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.black,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => FeedbackScreen(),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.black,
+                    ),
                   ),
-                );
-              },
-            ),
-          ),
-        ];
-      }),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AboutScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              PopupMenuItem(
+                child: ElevatedButton(
+                  child: Center(
+                    child: Text(
+                      'Feedback',
+                      style: GoogleFonts.montserrat(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      Colors.black,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => FeedbackScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ];
+          }),
     );
   }
 }
