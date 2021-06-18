@@ -79,9 +79,12 @@ class _PlayListScreenState extends State<PlayListScreen> {
                     // final state = snapshot.data;
                     // final sequence = state?.sequence ?? [];
                     return ListView.builder(
+                      // shrinkWrap: true,
                       itemCount: _playlist.length,
                       itemBuilder: (context, index) {
                         return Container(
+                          // padding: const EdgeInsets.all(20.0),
+                          // constraints: BoxConstraints(minHeight: 200),
                           child: Row(children: [
                             Container(
                               constraints:
@@ -373,7 +376,7 @@ class ImageDialog extends StatelessWidget {
     return Dialog(
       child: Container(
         width: 200,
-        height: 200,
+        height: 270,
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: ExactAssetImage(asset),
