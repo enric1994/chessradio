@@ -31,6 +31,7 @@ class _SelectorScreenState extends State<SelectorScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: new ThemeData(scaffoldBackgroundColor: Colors.black),
       home: Scaffold(
         appBar: AppBar(
           title: ChessRadioTitleWidget('Chess Radio', true),
